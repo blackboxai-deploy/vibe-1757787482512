@@ -1,0 +1,36 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+      css/components.css: {}
+      https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap: { type: external }
+      https://cdn.tailwindcss.com: { type: external }
+
+global-scripts:
+  js:
+    js/script.js: {}
+    js/components.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+contact-form:
+  css:
+    theme:
+      css/forms.css: {}
+  js:
+    js/forms.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+portfolio-filter:
+  css:
+    theme:
+      css/portfolio.css: {}
+  js:
+    js/portfolio.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

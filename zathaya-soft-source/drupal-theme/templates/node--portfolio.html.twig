@@ -1,0 +1,117 @@
+{#
+/**
+ * @file
+ * Theme implementation to display a portfolio node.
+ */
+#}
+
+<article{{ attributes.addClass('portfolio-card', 'bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden', 'hover:shadow-xl', 'transition-all', 'duration-300', 'portfolio-item') }}>
+  
+  {# Portfolio Image #}
+  {% if content.field_image %}
+    <div class="portfolio-image-container overflow-hidden">
+      <div class="relative">
+        {{ content.field_image|merge({'#attributes': {'class': ['portfolio-image', 'w-full', 'h-64', 'object-cover', 'transition-transform', 'duration-300']}}) }}
+        
+        {# Overlay on hover #}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {# Category Badge #}
+        {% if content.field_category %}
+          <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {{ content.field_category|merge({'#attributes': {'class': ['bg-white/90', 'text-gray-800', 'text-xs', 'px-2', 'py-1', 'rounded']}}) }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  
+  <div class="portfolio-content p-6">
+    {# Category Badge (visible on mobile/non-hover) #}
+    {% if content.field_category %}
+      <div class="portfolio-category mb-3 md:hidden">
+        {{ content.field_category|merge({'#attributes': {'class': ['inline-block', 'text-blue-600', 'border', 'border-blue-300', 'px-2', 'py-1', 'rounded', 'text-xs', 'font-medium']}}) }}
+      </div>
+    {% endif %}
+    
+    {# Portfolio Title #}
+    {% if not page %}
+      <h3 class="portfolio-title text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+        <a href="{{ url }}" class="text-gray-900 hover:text-blue-600">{{ label }}</a>
+      </h3>
+    {% else %}
+      <h1 class="portfolio-title text-3xl font-bold text-gray-900 mb-6">{{ label }}</h1>
+    {% endif %}
+    
+    {# Portfolio Description #}
+    {% if content.body %}
+      <div class="portfolio-description text-gray-600 text-sm mb-4 line-clamp-3">
+        {{ content.body }}
+      </div>
+    {% endif %}
+    
+    {# Project Details #}
+    <div class="portfolio-meta space-y-2 mb-4">
+      {% if content.field_client_name %}
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Client:</span>
+          <span class="font-medium text-gray-900">{{ content.field_client_name }}</span>
+        </div>
+      {% endif %}
+      
+      {% if content.field_completion_date %}
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Completed:</span>
+          <span class="font-medium text-gray-900">{{ content.field_completion_date }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    {# Results (for full view) #}
+    {% if page and content.field_results %}
+      <div class="portfolio-results border-t pt-4 mb-4">
+        <h4 class="text-sm font-semibold text-gray-900 mb-2">Key Results:</h4>
+        <ul class="space-y-1">
+          {% for result in node.field_results %}
+            <li class="text-xs text-gray-600 flex items-center">
+              <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+              {{ result.value }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {# Technology Tags #}
+    {% if content.field_technologies %}
+      <div class="portfolio-tags flex flex-wrap gap-2 pt-4 border-t">
+        {% for tech in node.field_technologies %}
+          <span class="portfolio-tag bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded font-medium">
+            {{ tech.entity.name.value }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# View Project Button (teaser view) #}
+    {% if not page %}
+      <div class="portfolio-cta mt-6">
+        <a href="{{ url }}" class="btn-secondary text-sm">
+          View Project
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</article>
+
+{# Add category data attribute for filtering #}
+{% if content.field_category %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var portfolioItem = document.querySelector('article.portfolio-card');
+      if (portfolioItem) {
+        portfolioItem.setAttribute('data-category', '{{ node.field_category.entity.field_machine_name.value|default(node.field_category.entity.name.value|lower|replace({' ': '-'})) }}');
+      }
+    });
+  </script>
+{% endif %}

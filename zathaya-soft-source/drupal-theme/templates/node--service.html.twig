@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Theme implementation to display a service node.
+ */
+#}
+
+<article{{ attributes.addClass('service-card', 'bg-white', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300', 'group', 'p-6') }}>
+  
+  <div class="service-content">
+    {# Service Icon #}
+    <div class="service-icon w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div class="w-6 h-6 bg-white rounded"></div>
+    </div>
+    
+    {# Service Title #}
+    {% if not page %}
+      <h3 class="text-xl font-bold text-gray-900 mb-3">
+        <a href="{{ url }}" class="text-gray-900 hover:text-blue-600 transition-colors duration-200">{{ label }}</a>
+      </h3>
+    {% else %}
+      <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ label }}</h1>
+    {% endif %}
+    
+    {# Service Image #}
+    {% if content.field_image %}
+      <div class="service-image mb-6">
+        {{ content.field_image }}
+      </div>
+    {% endif %}
+    
+    {# Service Description #}
+    {% if content.body %}
+      <div class="service-description text-gray-600 mb-6">
+        {{ content.body }}
+      </div>
+    {% endif %}
+
+    {# Service Features #}
+    {% if content.field_features %}
+      <div class="service-features mb-6">
+        <h4 class="font-semibold text-gray-900 mb-3">Features:</h4>
+        <ul class="space-y-2">
+          {% for feature in node.field_features %}
+            <li class="flex items-center text-sm text-gray-600">
+              <div class="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
+              {{ feature.value }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {# Pricing Packages #}
+    {% if content.field_packages %}
+      <div class="service-packages">
+        <h4 class="font-semibold text-gray-900 mb-4">Pricing Packages:</h4>
+        {{ content.field_packages }}
+      </div>
+    {% endif %}
+
+    {# CTA Button for teaser view #}
+    {% if not page %}
+      <div class="service-cta mt-6">
+        <a href="{{ url }}" class="btn-primary inline-block">
+          Learn More
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,26 @@
+name: 'Zathaya Soft'
+type: theme
+description: 'Professional website theme for Zathaya Soft - converted from Next.js'
+package: Custom
+core_version_requirement: ^10.5
+base theme: stable9
+
+libraries:
+  - zathaya_soft/global-styling
+  - zathaya_soft/global-scripts
+
+regions:
+  header: Header
+  navigation: Navigation
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  sidebar_first: 'Left Sidebar'
+  sidebar_second: 'Right Sidebar'
+  footer: Footer
+  hero: 'Hero Section'
+  services: 'Services Section'
+  testimonials: 'Testimonials Section'
+  cta: 'Call to Action Section'
+
+screenshot: screenshot.png

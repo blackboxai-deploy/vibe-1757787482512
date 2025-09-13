@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }} lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    
+    {# SEO Meta Tags #}
+    <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Layanan pembuatan website profesional untuk bisnis Anda. Solusi web development, e-commerce, dan aplikasi mobile dengan teknologi terkini.{% endif %}">
+    <meta name="keywords" content="jasa website, web development, pembuatan website, e-commerce, landing page, aplikasi web, Drupal development">
+    <meta name="author" content="Zathaya Soft">
+    <meta name="robots" content="index, follow">
+    
+    {# Open Graph Meta Tags #}
+    <meta property="og:title" content="{{ head_title|safe_join(' | ') }}">
+    <meta property="og:description" content="{% if page_description %}{{ page_description }}{% else %}Layanan pembuatan website profesional untuk bisnis Anda{% endif %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('<current>') }}">
+    <meta property="og:site_name" content="Zathaya Soft">
+    <meta property="og:locale" content="id_ID">
+    
+    {# Twitter Card Meta Tags #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ head_title|safe_join(' | ') }}">
+    <meta name="twitter:description" content="{% if page_description %}{{ page_description }}{% else %}Layanan pembuatan website profesional untuk bisnis Anda{% endif %}">
+    
+    {# Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes.addClass('antialiased', 'bg-white', 'text-gray-900', 'min-h-screen', 'flex', 'flex-col') }}>
+    {#
+      Keyboard navigation/accessibility link to main content section in
+      page.html.twig.
+    #}
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-blue-600 text-white px-4 py-2 rounded">{{ 'Skip to main content'|t }}</a>
+    
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

@@ -1,0 +1,138 @@
+{#
+/**
+ * @file
+ * Theme implementation to display the front page.
+ */
+#}
+{% extends "page.html.twig" %}
+
+{% block content %}
+  {# Hero Section #}
+  <section class="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-grid-slate-100 opacity-50 -z-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              Transformasi Digital untuk
+              <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Bisnis Anda
+              </span>
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed">
+              Wujudkan website impian Anda dengan teknologi terdepan. 
+              Solusi web development profesional yang menghadirkan hasil luar biasa untuk bisnis Anda.
+            </p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" 
+               class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg rounded-md font-medium text-center transition-all duration-200">
+              Konsultasi Gratis
+            </a>
+            <a href="{{ path('view.portfolio.page_1') }}" 
+               class="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg rounded-md font-medium text-center transition-all duration-200">
+              Lihat Portfolio
+            </a>
+          </div>
+
+          {# Stats Counter #}
+          <div class="grid grid-cols-3 gap-8 pt-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 counter" data-count="150">0</div>
+              <div class="text-gray-600">Proyek Selesai</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 counter" data-count="80">0</div>
+              <div class="text-gray-600">Klien Puas</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 counter" data-count="5">0</div>
+              <div class="text-gray-600">Tahun Pengalaman</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="aspect-square bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl shadow-2xl overflow-hidden">
+            {# This would be replaced with actual hero image from Drupal content #}
+            <img src="/themes/custom/zathaya_soft/images/hero-workspace.jpg" 
+                 alt="Modern professional web development workspace with multiple screens showing code and designs"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-yellow-400 rounded-full opacity-80"></div>
+          <div class="absolute -top-6 -right-6 w-16 h-16 bg-pink-400 rounded-full opacity-80"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# Services Section #}
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Layanan Unggulan Kami
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Solusi lengkap untuk kebutuhan digital bisnis Anda dengan teknologi terdepan dan desain yang memukau
+        </p>
+      </div>
+
+      {# Services will be rendered via Views #}
+      <div class="services-container">
+        {{ drupal_view('services', 'block_1') }}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="{{ path('view.services.page_1') }}" 
+           class="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg rounded-md font-medium transition-all duration-200">
+          Lihat Semua Layanan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {# Testimonials Section #}
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Apa Kata Klien Kami
+        </h2>
+        <p class="text-xl text-gray-600">
+          Kepuasan klien adalah prioritas utama kami
+        </p>
+      </div>
+
+      {# Testimonials will be rendered via Views #}
+      <div class="testimonials-container">
+        {{ drupal_view('testimonials', 'block_1') }}
+      </div>
+    </div>
+  </section>
+
+  {# CTA Section #}
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+        Siap Memulai Proyek Anda?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        Konsultasikan kebutuhan website Anda dengan tim ahli kami. 
+        Dapatkan solusi terbaik untuk mengembangkan bisnis digital Anda.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" 
+           class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-md font-medium transition-all duration-200">
+          Hubungi Kami Sekarang
+        </a>
+        <a href="{{ path('view.services.page_1') }}" 
+           class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg rounded-md font-medium transition-all duration-200">
+          Pelajari Lebih Lanjut
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

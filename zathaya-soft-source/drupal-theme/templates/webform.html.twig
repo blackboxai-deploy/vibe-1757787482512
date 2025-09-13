@@ -1,0 +1,181 @@
+{#
+/**
+ * @file
+ * Theme implementation for a webform.
+ */
+#}
+
+<div class="webform-wrapper contact-form bg-white rounded-lg shadow-lg">
+  <div class="webform-header p-8 pb-0">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Konsultasi Gratis</h2>
+    <p class="text-gray-600 mb-6">Isi form di bawah ini dan tim kami akan menghubungi Anda dalam 24 jam</p>
+  </div>
+  
+  <div class="webform-content p-8 pt-0">
+    {{ form }}
+  </div>
+</div>
+
+{# Custom styling for webform elements #}
+<style>
+.webform-wrapper .form-item {
+  margin-bottom: 1.5rem;
+}
+
+.webform-wrapper .form-item label {
+  display: block;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.webform-wrapper .form-item label.option {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+
+.webform-wrapper input[type="text"],
+.webform-wrapper input[type="email"],
+.webform-wrapper input[type="tel"],
+.webform-wrapper textarea,
+.webform-wrapper select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #F3F4F6;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.webform-wrapper input[type="text"]:focus,
+.webform-wrapper input[type="email"]:focus,
+.webform-wrapper input[type="tel"]:focus,
+.webform-wrapper textarea:focus,
+.webform-wrapper select:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.webform-wrapper textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.webform-wrapper .form-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #3B82F6 0%, #4F46E5 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.webform-wrapper .form-submit:hover {
+  background: linear-gradient(135deg, #2563EB 0%, #4338CA 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.webform-wrapper .form-submit:disabled {
+  background: #9CA3AF;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.webform-wrapper .form-required {
+  color: #EF4444;
+}
+
+.webform-wrapper .form-item--error input,
+.webform-wrapper .form-item--error textarea,
+.webform-wrapper .form-item--error select {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.webform-wrapper .form-item--error .form-item--error-message {
+  color: #EF4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.webform-wrapper .js-form-type-checkbox,
+.webform-wrapper .js-form-type-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.webform-wrapper .js-form-type-checkbox input,
+.webform-wrapper .js-form-type-radio input {
+  width: auto;
+  margin: 0;
+}
+
+.webform-wrapper .form-checkboxes,
+.webform-wrapper .form-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.webform-wrapper .description {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Grid layout for form fields */
+.webform-wrapper .webform-flex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .webform-wrapper .webform-flex {
+    grid-template-columns: 1fr;
+  }
+  
+  .webform-wrapper {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Success/Error messages */
+.webform-wrapper .messages {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.webform-wrapper .messages--status {
+  background-color: #ECFDF5;
+  color: #047857;
+  border-left-color: #10B981;
+}
+
+.webform-wrapper .messages--error {
+  background-color: #FEF2F2;
+  color: #B91C1C;
+  border-left-color: #EF4444;
+}
+
+.webform-wrapper .messages--warning {
+  background-color: #FFFBEB;
+  color: #B45309;
+  border-left-color: #F59E0B;
+}
+</style>

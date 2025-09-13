@@ -1,0 +1,37 @@
+global-styling:
+  version: VERSION
+  css:
+    base:
+      css/base.css: {}
+    layout:
+      css/layout.css: {}
+    component:
+      css/components.css: {}
+    theme:
+      css/theme.css: {}
+      css/tailwind.css: {}
+  dependencies:
+    - core/drupal
+
+global-scripts:
+  version: VERSION
+  js:
+    js/theme.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+tailwind:
+  version: VERSION
+  css:
+    theme:
+      css/tailwind.css: {}
+
+components:
+  version: VERSION
+  css:
+    component:
+      css/components.css: {}
+  js:
+    js/components.js: {}
